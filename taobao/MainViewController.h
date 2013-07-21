@@ -26,6 +26,8 @@
 @property(nonatomic,strong)ShopView *shopView;
 @property(nonatomic,strong)UIImageView *flipIv;
 @property(nonatomic,strong)UIButton *shopBtn;
+@property(nonatomic,strong)NSString *product_url;
+
 
 
 @end

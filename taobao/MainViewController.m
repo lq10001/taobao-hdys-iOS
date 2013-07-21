@@ -30,12 +30,10 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    page = 1;
+    self.product_url = kPRODUCT_NEW_URL;
     self.productArray = NSMutableArray.new;
     if ([self checkNet]) {
-        NSString *strUrl = [NSString stringWithFormat:@"%@%i",kPRODUCT_URL,page];
-        NSDictionary *productDic = [self requestServer:strUrl];
-        self.productArray = [[DataCenter sharedDataCenter] productArray:productDic];
+        [self loadProductData];
     }else{
         UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
                                                        message:@"没有网络连接，无法获取数据！"
@@ -102,6 +100,14 @@
     
 }
 
+- (void)loadProductData
+{
+    page =1;
+    NSString *strUrl = [NSString stringWithFormat:@"%@%i",self.product_url,page];
+    NSDictionary *productDic = [self requestServer:strUrl];
+    self.productArray = [[DataCenter sharedDataCenter] productArray:productDic];
+}
+
 - (void)onShared:(UIButton*)btn
 {
     /*
@@ -125,7 +131,7 @@
     
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:kUMENG_KEY
-                                      shareText:@"韩都衣舍"
+                                      shareText:@"韩都衣舍旗舰店 http://handuyishe.m.tmall.com/shop/shop_index.htm?sid=d01d10e83cd4a09d&shop_id=58501945 "
                                      shareImage:viewImage
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechat,UMShareToQzone,UMShareToEmail,nil]
                                        delegate:nil];
@@ -208,15 +214,21 @@
     switch (index) {
         case NewType:
         {
-            ShopWebViewController *shopWeb = [[ShopWebViewController alloc] initWithNibName:nil bundle:nil];
-            shopWeb.shopUrl = kNEW_PRODUCT_URL;
-            [self.navigationController pushViewController:shopWeb animated:YES];
+            self.product_url = kPRODUCT_NEW_URL;
+            [self loadProductData];
+            
+            [productTableView reloadData];
+            NSIndexPath *localIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [productTableView scrollToRowAtIndexPath:localIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+
             break;
         }case SaleType:
         {
-            ShopWebViewController *shopWeb = [[ShopWebViewController alloc] initWithNibName:nil bundle:nil];
-            shopWeb.shopUrl = kSALE_PRODUCT_URL;
-            [self.navigationController pushViewController:shopWeb animated:YES];
+            self.product_url = kPRODUCT_SALE_URL;
+            [self loadProductData];
+            [productTableView reloadData];
+            NSIndexPath *localIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [productTableView scrollToRowAtIndexPath:localIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
             break;
         }case ShopType:
         {
@@ -481,11 +493,10 @@
 }
 
 //刷新调用的方法
--(void)refreshView{
-    page = 1;
-    NSString *strUrl = [NSString stringWithFormat:@"%@%i",kPRODUCT_URL,page];
-    NSDictionary *productDic = [self requestServer:strUrl];
-    self.productArray = [[DataCenter sharedDataCenter] productArray:productDic];
+-(void)refreshView
+{
+    [self loadProductData];
+    
     [productTableView reloadData];
     [self testFinishedLoadData];
 }
@@ -493,7 +504,7 @@
 -(void)getNextPageView{
     
     page += 1;
-    NSString *strUrl = [NSString stringWithFormat:@"%@%i",kPRODUCT_URL,page];
+    NSString *strUrl = [NSString stringWithFormat:@"%@%i",self.product_url,page];
     NSDictionary *productDic = [self requestServer:strUrl];
     NSArray *temp_array = [[DataCenter sharedDataCenter] productArray:productDic];
     for (Product *pro in temp_array) {

@@ -214,7 +214,7 @@
     
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:kUMENG_KEY
-                                      shareText:@"韩都衣舍 <a>www.taobao.com<a>"
+                                      shareText:@"韩都衣舍旗舰店 http://handuyishe.m.tmall.com/shop/shop_index.htm?sid=d01d10e83cd4a09d&shop_id=58501945"
                                      shareImage:viewImage
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechat,UMShareToQzone,UMShareToEmail,nil]
                                        delegate:nil];

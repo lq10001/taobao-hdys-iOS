@@ -42,7 +42,8 @@
 #define kSERVER_URL         @"http://121.199.47.31:8080/taobao/"
 #define kSHOP_URL           @"http://121.199.47.31:8080/taobao/web/shop_list"
 #define kSEARCH_TAG_URL     @"http://121.199.47.31:8080/taobao/web/search_list"
-#define kPRODUCT_URL        @"http://121.199.47.31:8080/taobao/web/product_list?numPerPage=20&pageNum="
+#define kPRODUCT_NEW_URL        @"http://121.199.47.31:8080/taobao/web/product_list?numPerPage=20&pageNum="
+#define kPRODUCT_SALE_URL        @"http://121.199.47.31:8080/taobao/web/product_list?numPerPage=20&pageNum="
 #define kPRODUCTIMG_URL     @"http://121.199.47.31:8080/taobao/web/productimg_list?productid="
 
 
