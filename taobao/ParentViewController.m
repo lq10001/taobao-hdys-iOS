@@ -25,6 +25,9 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:str_url]];
     //将请求的url数据放到NSData对象中
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    if (response == nil) {
+        return nil;
+    }
     //IOS5自带解析类NSJSONSerialization从response中解析出数据放到字典中
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:nil];
     return dic;

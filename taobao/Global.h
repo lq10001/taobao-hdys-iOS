@@ -39,19 +39,20 @@
 
 //121.199.47.31
 
-#define kSERVER_URL         @"http://121.199.47.31:8080/taobao/"
-#define kSHOP_URL           @"http://121.199.47.31:8080/taobao/web/shop_list"
-#define kSEARCH_TAG_URL     @"http://121.199.47.31:8080/taobao/web/search_list"
-#define kPRODUCT_NEW_URL        @"http://121.199.47.31:8080/taobao/web/product_list?numPerPage=20&pageNum="
-#define kPRODUCT_SALE_URL        @"http://121.199.47.31:8080/taobao/web/product_list?numPerPage=20&pageNum="
-#define kPRODUCTIMG_URL     @"http://121.199.47.31:8080/taobao/web/productimg_list?productid="
+//#define kSERVER_URL         @"http://121.199.47.31:8080/taobao/"
+//#define kSHOP_URL           @"http://121.199.47.31:8080/taobao/web/shop_list"
+//#define kSEARCH_TAG_URL     @"http://121.199.47.31:8080/taobao/web/search_list"
+//#define kPRODUCT_NEW_URL        @"http://121.199.47.31:8080/taobao/web/product_list?numPerPage=20&pageNum="
+//#define kPRODUCT_SALE_URL        @"http://121.199.47.31:8080/taobao/web/productSale_list?numPerPage=20&pageNum="
+//#define kPRODUCTIMG_URL     @"http://121.199.47.31:8080/taobao/web/productimg_list?productid="
 
 
-//#define kSERVER_URL         @"http://192.168.1.103:8080/taobao/"
-//#define kSHOP_URL           @"http://192.168.1.103:8080/taobao/web/shop_list"
-//#define kSEARCH_TAG_URL     @"http://192.168.1.103:8080/taobao/web/search_list"
-//#define kPRODUCT_URL        @"http://192.168.1.103:8080/taobao/web/product_list?numPerPage=20&pageNum="
-//#define kPRODUCTIMG_URL     @"http://192.168.1.103:8080/taobao/web/productimg_list?productid="
+#define kSERVER_URL         @"http://192.168.1.101:8080/taobao/"
+#define kSHOP_URL           @"http://192.168.1.101:8080/taobao/web/shop_list"
+#define kSEARCH_TAG_URL     @"http://192.168.1.101:8080/taobao/web/search_list"
+#define kPRODUCT_NEW_URL        @"http://192.168.1.101:8080/taobao/web/product_list?numPerPage=20&pageNum="
+#define kPRODUCT_SALE_URL        @"http://192.168.1.101:8080/taobao/web/productSale_list?numPerPage=20&pageNum="
+#define kPRODUCTIMG_URL     @"http://192.168.1.101:8080/taobao/web/productimg_list?productid="
 
 
 #define kNEW_PRODUCT_URL    @"http://handuyishe.m.tmall.com/shop/shop_auction_search.htm?conditions=&sid=9ee8445d31cc7a85&sort=oldstarts&suid=263817957&q=&end_price=&pds=newrank%23h%23shop&ascid=&scid=&start_price="
