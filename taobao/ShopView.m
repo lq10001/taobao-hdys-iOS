@@ -69,7 +69,7 @@
             [productScrView addSubview:iv1];
             
         
-            /*
+            
             UIButton *collectBtn = [UIButton buttonWithNormalImgName:@"collect" selectedImgName:@"collect2" target:self selector:@selector(onCellect:)];
             collectBtn.frame = CGRectMake(0, 0,collectBtn.bWidth , collectBtn.bHeight);
             collectBtn.tag = kSHOP_BTN_TAG + i;
@@ -92,7 +92,7 @@
             shareLbl.font = [UIFont systemFontOfSize:11.0f];
             shareLbl.text = @"收藏";
             [view1 addSubview:shareLbl];
-        */
+        
             
             
             
