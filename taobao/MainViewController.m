@@ -13,6 +13,7 @@
 #import "ProductLikeViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
+#import "ShopTopViewController.h"
 
 @interface MainViewController ()
 
@@ -232,7 +233,8 @@
             break;
         }case ShopType:
         {
-            ShopCollectViewController *vc = [[ShopCollectViewController alloc] initWithNibName:nil bundle:nil];
+//            ShopCollectViewController *vc = [[ShopCollectViewController alloc] initWithNibName:nil bundle:nil];
+            ShopTopViewController *vc = [[ShopTopViewController alloc] initWithNibName:nil bundle:nil];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }case ProductType:

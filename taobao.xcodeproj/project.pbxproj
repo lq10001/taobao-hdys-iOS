@@ -83,6 +83,7 @@
 		DBEDF8FD1745AB4F007A5551 /* person_btn_bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEDF8FB1745AB4F007A5551 /* person_btn_bg1.png */; };
 		DBEDF8FE1745AB4F007A5551 /* person_btn_bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEDF8FC1745AB4F007A5551 /* person_btn_bg2.png */; };
 		DBEDF9011745B345007A5551 /* ShopWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDF9001745B345007A5551 /* ShopWebViewController.m */; };
+		DBF21FAB17A01BDA00A157C5 /* ShopTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF21FA917A01BDA00A157C5 /* ShopTopViewController.m */; };
 		DBF3CD0717368CA3009163FB /* MainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3CD0617368CA3009163FB /* MainCell.m */; };
 		DBF3CD0C17369370009163FB /* PersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3CD0B17369370009163FB /* PersonView.m */; };
 		DBF476F8176DA35800529BE4 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF476F6176DA35800529BE4 /* like.png */; };
@@ -239,6 +240,8 @@
 		DBEDF8FC1745AB4F007A5551 /* person_btn_bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_btn_bg2.png; sourceTree = "<group>"; };
 		DBEDF8FF1745B345007A5551 /* ShopWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopWebViewController.h; sourceTree = "<group>"; };
 		DBEDF9001745B345007A5551 /* ShopWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopWebViewController.m; sourceTree = "<group>"; };
+		DBF21FA917A01BDA00A157C5 /* ShopTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTopViewController.m; sourceTree = "<group>"; };
+		DBF21FAA17A01BDA00A157C5 /* ShopTopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTopViewController.h; sourceTree = "<group>"; };
 		DBF3CD0517368CA3009163FB /* MainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCell.h; sourceTree = "<group>"; };
 		DBF3CD0617368CA3009163FB /* MainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCell.m; sourceTree = "<group>"; };
 		DBF3CD0A17369370009163FB /* PersonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonView.h; sourceTree = "<group>"; };
@@ -509,6 +512,8 @@
 				DBF476FF176DC92600529BE4 /* ProductLikeViewController.m */,
 				DBF6A99F17683FB8003FD552 /* ShopCollectViewController.h */,
 				DBF6A9A017683FB8003FD552 /* ShopCollectViewController.m */,
+				DBF21FAA17A01BDA00A157C5 /* ShopTopViewController.h */,
+				DBF21FA917A01BDA00A157C5 /* ShopTopViewController.m */,
 				DBEDF8FF1745B345007A5551 /* ShopWebViewController.h */,
 				DBEDF9001745B345007A5551 /* ShopWebViewController.m */,
 				DB0F423F1750411600D484AD /* DataCenter.h */,
@@ -785,6 +790,7 @@
 				DBF47700176DC92600529BE4 /* ProductLikeViewController.m in Sources */,
 				DBF66B0D1777406800EDF0A6 /* GrayPageControl.m in Sources */,
 				DBD7C4C0177CB56600CC4C77 /* InfoCell.m in Sources */,
+				DBF21FAB17A01BDA00A157C5 /* ShopTopViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

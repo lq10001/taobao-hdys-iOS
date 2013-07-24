@@ -1,25 +1,43 @@
 
 
-#import "ShopCollectViewController.h"
+#import "ShopTopViewController.h"
 #import "UserInfoManager.h"
 #import "Shop.h"
 #import "ShopWebViewController.h"
 
 #define kSHOP_ICON  100
 #define kSHOP_TITLE  200
-#define kSHOP_DEL  300
+#define kSHOP_ADD  300
 
 
-@interface ShopCollectViewController ()
+@interface ShopTopViewController ()
 
 @end
 
-@implementation ShopCollectViewController
+@implementation ShopTopViewController
+
+
+@synthesize shopArray;
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+        
+    adDic = NSDictionary.new;
+    if ([self checkNet]){
+        NSDictionary *rtnDic = [self requestServer:kSHOP_URL];
+        adDic = [rtnDic objectForKey:@"ad_list"];
+        
+        self.shopArray = NSMutableArray.new;
+        for (NSDictionary *dic in adDic) {
+            Shop *shop = [[Shop alloc] init];
+            shop.name = [dic objectForKey:@"name"];
+            shop.pic_url = [dic objectForKey:@"imgurl"];
+            shop.shop_url = [dic objectForKey:@"shopurl"];
+            [self.shopArray addObject:shop];
+        }
+    }
     
     UIImageView *titleIv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"main_title"]];
     titleIv.frame = CGRectMake(0, 0, titleIv.bWidth / 2, titleIv.bHeight / 2);
@@ -64,7 +82,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[UserInfoManager sharedManager].shopArray count];
+    return adDic.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,10 +97,10 @@
     UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+//        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         [self createCellView:cell];
     }
-    Shop *shop = [[UserInfoManager sharedManager].shopArray objectAtIndex:indexPath.row];
+    Shop *shop = [shopArray objectAtIndex:indexPath.row];
     [self loadCellView:cell shop:shop index:indexPath.row];
 
     return cell;
@@ -90,7 +108,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Shop *shop = [[UserInfoManager sharedManager].shopArray objectAtIndex:indexPath.row];
+    Shop *shop = [shopArray objectAtIndex:indexPath.row];
     ShopWebViewController *shopWeb = [[ShopWebViewController alloc] initWithNibName:nil bundle:nil];
     shopWeb.shopUrl = shop.shop_url;
     [self.navigationController pushViewController:shopWeb animated:YES];
@@ -113,17 +131,16 @@
     titleLbl.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
     [cell addSubview:titleLbl];
     
-    /*
+    
     UIButton *delBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    delBtn.tag = kSHOP_DEL;
+    delBtn.tag = kSHOP_ADD;
     delBtn.frame = CGRectMake(titleLbl.right + 5, 0, 40, 30);
     delBtn.centerY = 30;
     delBtn.backgroundColor = [UIColor whiteColor];
-    [delBtn setTitle:@"删除" forState:UIControlStateNormal];                      
+    [delBtn setTitle:@"添加" forState:UIControlStateNormal];                      
     delBtn.titleLabel.font = [UIFont fontWithName:@"helvetica" size:12];
-    [delBtn addTarget:self action:@selector(onDel:) forControlEvents:UIControlEventTouchUpInside];
+    [delBtn addTarget:self action:@selector(onAdd:) forControlEvents:UIControlEventTouchUpInside];
     [cell addSubview:delBtn];
-     */
 
 }
 
@@ -131,10 +148,16 @@
 {
     UIImageView *iv = (UIImageView*)[cell viewWithTag:kSHOP_ICON];
     UILabel *lbl = (UILabel*)[cell viewWithTag:kSHOP_TITLE];
-//    UIButton *btn = (UIButton*)[cell viewWithTag:kSHOP_DEL];
+    UIButton *btn = (UIButton*)[cell viewWithTag:kSHOP_ADD];
 
     lbl.text = shop.name;
-//    btn.titleLabel.tag = index;
+    if([[UserInfoManager sharedManager] isSaveShop:shop.name])
+    {
+        btn.hidden = YES;
+    }else{
+        btn.titleLabel.tag = index;
+    }
+    
     
     NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kSERVER_URL,shop.pic_url]];
     
@@ -163,9 +186,9 @@
 	return UITableViewCellEditingStyleDelete;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @"删除";
-}
+//-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return @"删除";
+//}
 
 - (void)tableView:(UITableView *)tableView
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle  forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -175,6 +198,28 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle  forRowAtIndexPath:
     [[UserInfoManager sharedManager] setSaveShop:shop.name value:NO];
     [[UserInfoManager sharedManager].shopArray removeObjectAtIndex:index];
     [shopTableView reloadData];
+}
+
+- (void)onAdd:(UIButton*)btn
+{
+    int index = btn.titleLabel.tag;
+    //    UILabel *lbl = (UILabel*)[productScrView viewWithTag:kSHOP_LBL_TAG + index];
+    
+    //    [btn1 removeFromSuperview];
+    //    [lbl removeFromSuperview];
+    Shop *shop = [self.shopArray objectAtIndex:index];
+    if (![[UserInfoManager sharedManager] isSaveShop:shop.name]) {
+//        btn.selected = NO;
+//        [[UserInfoManager sharedManager].shopArray removeObject:shop];
+//        [[UserInfoManager sharedManager] setSaveShop:shop.name value:NO];
+     
+        btn.selected = YES;
+        [[UserInfoManager sharedManager].shopArray addObject:shop];
+        [[UserInfoManager sharedManager] setSaveShop:shop.name value:YES];
+        
+        [shopTableView reloadData];
+        
+    }
 }
 
 
