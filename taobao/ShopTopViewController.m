@@ -47,13 +47,13 @@
     [self.view addSubview:toolView];
     [toolView addSubview:titleIv];
     
-    UILabel *nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 180, toolView.height)];
+    UILabel *nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.view.width, toolView.height)];
     nameLbl.center = CGPointMake(toolView.width / 2, toolView.height / 2);
     nameLbl.textAlignment = UITextAlignmentCenter;
     nameLbl.backgroundColor = [UIColor clearColor];
     nameLbl.textColor = [UIColor whiteColor];
-    nameLbl.font = [UIFont systemFontOfSize:20.0f];
-    nameLbl.text = @"收藏的店铺";
+    nameLbl.font = [UIFont systemFontOfSize:18.0f];
+    nameLbl.text = @"最受买家欢迎天猫品牌TOP20";
     [toolView addSubview:nameLbl];
     
         
@@ -97,7 +97,7 @@
     UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         [self createCellView:cell];
     }
     Shop *shop = [shopArray objectAtIndex:indexPath.row];
@@ -216,7 +216,8 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle  forRowAtIndexPath:
         btn.selected = YES;
         [[UserInfoManager sharedManager].shopArray addObject:shop];
         [[UserInfoManager sharedManager] setSaveShop:shop.name value:YES];
-        
+        [[UserInfoManager sharedManager] saveShopArray];
+        [[UserInfoManager sharedManager] saveUserData];
         [shopTableView reloadData];
         
     }

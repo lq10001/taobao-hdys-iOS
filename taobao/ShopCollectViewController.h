@@ -8,4 +8,6 @@
     UITableView *shopTableView;
 }
 
+@property(nonatomic,strong)NSMutableArray *shopCollectArray;
+
 @end

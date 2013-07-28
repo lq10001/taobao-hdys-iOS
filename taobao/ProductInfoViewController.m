@@ -172,10 +172,14 @@
         btn.selected = NO;
         [[UserInfoManager sharedManager].productArray removeObject:product];
         [[UserInfoManager sharedManager] setSaveProduct:self.product.num_iid value:NO];
+        [[UserInfoManager sharedManager] saveProductArray];
+        [[UserInfoManager sharedManager] saveUserData];
     }else{
         btn.selected = YES;
         [[UserInfoManager sharedManager].productArray addObject:self.product];
         [[UserInfoManager sharedManager] setSaveProduct:self.product.num_iid value:YES];
+        [[UserInfoManager sharedManager] saveProductArray];
+        [[UserInfoManager sharedManager] saveUserData];
         
         self.tsView.alpha = 0.8f;
         self.tsView.hidden = NO;
