@@ -5,7 +5,7 @@
 #import "UIViewAdditions.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface ParentViewController : UIViewController
+@interface ParentViewController : UIViewController<NSURLConnectionDelegate>
 
 - (NSDictionary*)requestServer:(NSString*)str_url;
 - (BOOL)checkNet;

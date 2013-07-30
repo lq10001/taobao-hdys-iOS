@@ -132,16 +132,12 @@
     [cell addSubview:titleLbl];
     
     
-    UIButton *delBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *delBtn = [UIButton buttonWithNormalImgName:@"addonshop" selectedImgName:@"rmoneshop"  target:self selector:@selector(onAdd:)];
     delBtn.tag = kSHOP_ADD;
-    delBtn.frame = CGRectMake(titleLbl.right + 5, 0, 40, 30);
+    delBtn.left = titleLbl.right + 10;
     delBtn.centerY = 30;
     delBtn.backgroundColor = [UIColor whiteColor];
-    [delBtn setTitle:@"添加" forState:UIControlStateNormal];                      
-    delBtn.titleLabel.font = [UIFont fontWithName:@"helvetica" size:12];
-    [delBtn addTarget:self action:@selector(onAdd:) forControlEvents:UIControlEventTouchUpInside];
     [cell addSubview:delBtn];
-
 }
 
 - (void)loadCellView:(UITableViewCell*)cell shop:(Shop*)shop index:(int)index
@@ -151,11 +147,12 @@
     UIButton *btn = (UIButton*)[cell viewWithTag:kSHOP_ADD];
 
     lbl.text = shop.name;
+    btn.titleLabel.tag = index;
     if([[UserInfoManager sharedManager] isSaveShop:shop.name])
     {
-        btn.hidden = YES;
+        btn.selected = YES;
     }else{
-        btn.titleLabel.tag = index;
+        btn.selected = NO;
     }
     
     
@@ -182,23 +179,8 @@
     }
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tv editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return UITableViewCellEditingStyleDelete;
-}
 
-//-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return @"删除";
-//}
 
-- (void)tableView:(UITableView *)tableView
-commitEditingStyle:(UITableViewCellEditingStyle)editingStyle  forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    int index = indexPath.row;
-    Shop *shop = [[UserInfoManager sharedManager].shopArray objectAtIndex:index];
-    [[UserInfoManager sharedManager] setSaveShop:shop.name value:NO];
-    [[UserInfoManager sharedManager].shopArray removeObjectAtIndex:index];
-    [shopTableView reloadData];
-}
 
 - (void)onAdd:(UIButton*)btn
 {
@@ -208,18 +190,20 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle  forRowAtIndexPath:
     //    [btn1 removeFromSuperview];
     //    [lbl removeFromSuperview];
     Shop *shop = [self.shopArray objectAtIndex:index];
-    if (![[UserInfoManager sharedManager] isSaveShop:shop.name]) {
-//        btn.selected = NO;
-//        [[UserInfoManager sharedManager].shopArray removeObject:shop];
-//        [[UserInfoManager sharedManager] setSaveShop:shop.name value:NO];
-     
+    if ([[UserInfoManager sharedManager] isSaveShop:shop.name]) {
+        btn.selected = NO;
+        [[UserInfoManager sharedManager].shopArray removeObject:shop];
+        [[UserInfoManager sharedManager] setSaveShop:shop.name value:NO];
+        [[UserInfoManager sharedManager] saveShopArray];
+        [[UserInfoManager sharedManager] saveUserData];
+        [shopTableView reloadData];
+    }else{
         btn.selected = YES;
         [[UserInfoManager sharedManager].shopArray addObject:shop];
         [[UserInfoManager sharedManager] setSaveShop:shop.name value:YES];
         [[UserInfoManager sharedManager] saveShopArray];
         [[UserInfoManager sharedManager] saveUserData];
         [shopTableView reloadData];
-        
     }
 }
 

@@ -76,6 +76,10 @@
 		DBEC35AD177D325C00C7741C /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBEC35A2177D325C00C7741C /* UMSShareListController.xib */; };
 		DBEC35AE177D325C00C7741C /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DBEC35A3177D325C00C7741C /* UMSocialSDKResources.bundle */; };
 		DBEC8F3E176F5C5F0055F541 /* flip.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEC8F3D176F5C5F0055F541 /* flip.png */; };
+		DBEC903417A15F9C00DCE11F /* addshop.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEC903317A15F9C00DCE11F /* addshop.png */; };
+		DBEC903817A165A900DCE11F /* rmoneshop.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEC903517A165A900DCE11F /* rmoneshop.png */; };
+		DBEC903917A165A900DCE11F /* addonshop.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEC903617A165A900DCE11F /* addonshop.png */; };
+		DBEC903A17A165A900DCE11F /* addShopBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEC903717A165A900DCE11F /* addShopBtn.png */; };
 		DBEDF8F61745AB25007A5551 /* person_new.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEDF8F21745AB25007A5551 /* person_new.png */; };
 		DBEDF8F71745AB25007A5551 /* person_product.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEDF8F31745AB25007A5551 /* person_product.png */; };
 		DBEDF8F81745AB25007A5551 /* person_sale.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEDF8F41745AB25007A5551 /* person_sale.png */; };
@@ -232,6 +236,10 @@
 		DBEC35A2177D325C00C7741C /* UMSShareListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSShareListController.xib; sourceTree = "<group>"; };
 		DBEC35A3177D325C00C7741C /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
 		DBEC8F3D176F5C5F0055F541 /* flip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flip.png; sourceTree = "<group>"; };
+		DBEC903317A15F9C00DCE11F /* addshop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addshop.png; sourceTree = "<group>"; };
+		DBEC903517A165A900DCE11F /* rmoneshop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rmoneshop.png; sourceTree = "<group>"; };
+		DBEC903617A165A900DCE11F /* addonshop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addonshop.png; sourceTree = "<group>"; };
+		DBEC903717A165A900DCE11F /* addShopBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addShopBtn.png; sourceTree = "<group>"; };
 		DBEDF8F21745AB25007A5551 /* person_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_new.png; sourceTree = "<group>"; };
 		DBEDF8F31745AB25007A5551 /* person_product.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_product.png; sourceTree = "<group>"; };
 		DBEDF8F41745AB25007A5551 /* person_sale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_sale.png; sourceTree = "<group>"; };
@@ -344,6 +352,10 @@
 		DB2BAE07174522C10046949F /* main */ = {
 			isa = PBXGroup;
 			children = (
+				DBEC903517A165A900DCE11F /* rmoneshop.png */,
+				DBEC903617A165A900DCE11F /* addonshop.png */,
+				DBEC903717A165A900DCE11F /* addShopBtn.png */,
+				DBEC903317A15F9C00DCE11F /* addshop.png */,
 				DBEC8F3D176F5C5F0055F541 /* flip.png */,
 				DBF476F6176DA35800529BE4 /* like.png */,
 				DBF476F7176DA35800529BE4 /* like2.png */,
@@ -754,6 +766,10 @@
 				DBEC35AC177D325C00C7741C /* UMSnsAccountViewController.xib in Resources */,
 				DBEC35AD177D325C00C7741C /* UMSShareListController.xib in Resources */,
 				DBEC35AE177D325C00C7741C /* UMSocialSDKResources.bundle in Resources */,
+				DBEC903417A15F9C00DCE11F /* addshop.png in Resources */,
+				DBEC903817A165A900DCE11F /* rmoneshop.png in Resources */,
+				DBEC903917A165A900DCE11F /* addonshop.png in Resources */,
+				DBEC903A17A165A900DCE11F /* addShopBtn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

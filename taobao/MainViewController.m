@@ -14,6 +14,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
 #import "ShopTopViewController.h"
+#import "MBProgressHUD.h"
 
 @interface MainViewController ()
 
@@ -107,6 +108,29 @@
     NSString *strUrl = [NSString stringWithFormat:@"%@%i",self.product_url,page];
     NSDictionary *productDic = [self requestServer:strUrl];
     self.productArray = [[DataCenter sharedDataCenter] productArray:productDic];
+}
+
+- (void)synLoadProductData
+{
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    page =1;
+    NSString *strUrl = [NSString stringWithFormat:@"%@%i",self.product_url,page];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:strUrl]];
+    NSOperationQueue *queue = [NSOperationQueue new];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:queue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+                               if (error) {
+                               }else{
+                                   NSDictionary *productDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+                                   self.productArray = [[DataCenter sharedDataCenter] productArray:productDic];
+                                   [productTableView reloadData];
+                                   NSIndexPath *localIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                                   [productTableView scrollToRowAtIndexPath:localIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//                                   [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                               }
+                           }];
 }
 
 - (void)onShared:(UIButton*)btn
@@ -216,20 +240,13 @@
         case NewType:
         {
             self.product_url = kPRODUCT_NEW_URL;
-            [self loadProductData];
-            
-            [productTableView reloadData];
-            NSIndexPath *localIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-            [productTableView scrollToRowAtIndexPath:localIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            [self synLoadProductData];
 
             break;
         }case SaleType:
         {
             self.product_url = kPRODUCT_SALE_URL;
-            [self loadProductData];
-            [productTableView reloadData];
-            NSIndexPath *localIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-            [productTableView scrollToRowAtIndexPath:localIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            [self synLoadProductData];
             break;
         }case ShopType:
         {
