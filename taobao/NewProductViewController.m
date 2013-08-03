@@ -1,6 +1,6 @@
 
 
-#import "MainViewController.h"
+#import "NewProductViewController.h"
 #import "PersonView.h"
 #import "ProductInfoViewController.h"
 #import "ShopView.h"
@@ -16,15 +16,16 @@
 #import "ShopTopViewController.h"
 #import "MBProgressHUD.h"
 
-@interface MainViewController ()
+@interface NewProductViewController ()
 
 @end
 
-@implementation MainViewController
+@implementation NewProductViewController
 
-@synthesize shopView;
+//@synthesize shopView;
 @synthesize flipIv;
 @synthesize shopBtn;
+@synthesize productType;
 
 - (void)viewDidLoad
 {
@@ -32,7 +33,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.product_url = kPRODUCT_NEW_URL;
+    self.product_url = (self.productType == 1) ?  kPRODUCT_NEW_URL : kPRODUCT_SALE_URL;
     self.productArray = NSMutableArray.new;
     if ([self checkNet]) {
         [self loadProductData];
@@ -45,6 +46,23 @@
         [alert show];
         self.productArray = nil;
     }
+    
+    UIImageView *titleIv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"main_title"]];
+    titleIv.frame = CGRectMake(0, 0, titleIv.bWidth / 2, titleIv.bHeight / 2);
+    
+    UIView *toolView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, titleIv.height)];
+    toolView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:toolView];
+    [toolView addSubview:titleIv];
+    
+    UILabel *nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 180, toolView.height)];
+    nameLbl.center = CGPointMake(toolView.width / 2, toolView.height / 2);
+    nameLbl.textAlignment = UITextAlignmentCenter;
+    nameLbl.backgroundColor = [UIColor clearColor];
+    nameLbl.textColor = [UIColor whiteColor];
+    nameLbl.font = [UIFont systemFontOfSize:20.0f];
+    nameLbl.text = (self.productType == 1) ? @"新品推荐" :@"销量排行";
+    [toolView addSubview:nameLbl];
 
     
     productTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 38 , self.view.width, self.view.height - 38)];
@@ -58,11 +76,6 @@
     [self createHeaderView];
     [self performSelector:@selector(testFinishedLoadData) withObject:nil afterDelay:0.0f];
     
-    UIButton *menuBtn = [UIButton buttonWithNormalImgName:@"main_menu" HighlightImgName:nil target:self selector:@selector(onPerson:)];
-    menuBtn.left = -5;
-    menuBtn.bottom = self.view.height - 10;
-    [self.view addSubview:menuBtn];
-    
     self.flipIv = [[UIImageView alloc] initWithImage:[UIImage imageNamedAuto:@"flip"]];
     self.flipIv.frame = CGRectMake(0, 0, self.flipIv.bWidth, self.flipIv.bHeight);
     self.flipIv.centerY = self.view.centerY + 80;
@@ -70,16 +83,13 @@
     [self.view addSubview:self.flipIv];
 //    flip
     
-    self.shopView = [[ShopView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height + 38)];
-    self.shopView.delegate = self;
-    self.shopView.parentVc = self;
-    self.shopView.top = - self.view.height ;
-    [self.view addSubview:self.shopView];
+    
+    UIButton *backBtn = [UIButton buttonWithNormalImgName:@"product_back" HighlightImgName:@"product_back" target:self selector:@selector(onBack)];
+    backBtn.left = 0;
+    backBtn.centerY = self.view.centerY - 80;
+    [self.view addSubview:backBtn];
+    
         
-    self.shopBtn = [UIButton buttonWithNormalImgName:@"main_tuijian1" HighlightImgName:nil target:self selector:@selector(onShop:)];
-    self.shopBtn.center = CGPointMake(self.view.width - 20,50);
-    [self.view addSubview:self.shopBtn];
-
 }
 
 #pragma mark - On
@@ -87,7 +97,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.shopView.top = - self.view.height ;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -133,78 +142,11 @@
                            }];
 }
 
-- (void)onShared:(UIButton*)btn
+- (void)onBack
 {
-    /*
-    [UMSocialConfig setSnsPlatformNames:@[UMShareToSina,UMShareToTencent,UMShareToWechat,UMShareToQzone,UMShareToEmail]];
-    
-    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialSDK" withTitle:nil];
-    socialData.shareText = @"test";
-    socialData.shareImage =[UIImage imageNamedAuto:[NSString stringWithFormat:@"%i.jpg",1]];
-    
-    UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-    UMSocialIconActionSheet *iconActionSheet = [socialControllerService getSocialIconActionSheetInController:self];
-    UIViewController *rootViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
-    [iconActionSheet showInView:rootViewController.view];
-     */
-    
-    UIGraphicsBeginImageContextWithOptions(self.view.frame.size,NO,kScreenScale); //currentView 当前的view
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-
-    
-    [UMSocialSnsService presentSnsIconSheetView:self
-                                         appKey:kUMENG_KEY
-                                      shareText:@"韩都衣舍旗舰店 http://handuyishe.m.tmall.com/shop/shop_index.htm?sid=d01d10e83cd4a09d&shop_id=58501945 "
-                                     shareImage:viewImage
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechat,UMShareToQzone,UMShareToEmail,nil]
-                                       delegate:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)onShop:(UIButton*)btn
-{
-    
-    if ([self checkNet]) {
-        self.shopView.hidden = NO;
-        [UIView animateWithDuration:0.5f
-                              delay:0.0f
-                            options:UIViewAnimationCurveEaseOut
-                         animations:^{
-                             self.shopView.top = 0;
-                             shopBtn.centerY = self.shopView.height + 50;
-                         } completion:NULL];
-    }else{
-        UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
-                                                       message:@"没有网络连接，无法获取数据！"
-                                                      delegate:self
-                                             cancelButtonTitle:@"ok"
-                                             otherButtonTitles:nil];
-        [alert show];
-        self.productArray = nil;
-    }
-
-}
-
-- (void)onPerson:(UIButton*)btn
-{
-    PersonView *personView = [[PersonView alloc] initWithFrame:self.view.bounds];
-    personView.delegate = self;
-    personView.alpha = .0f;
-    [self.view addSubview:personView];
-    
-    [UIView animateWithDuration:0.8f
-                     animations:^{
-                         personView.alpha = 1.0f;
-                     } completion:^(BOOL finished){
-
-                     }];
-    
-
-//    CAAnimation *fadeAnimation=[self fadeAnimation];
-//    [personView.layer addAnimation:fadeAnimation forKey:@"fade"];
-
-}
 
 - (CAAnimation*) fadeAnimation
 {
@@ -217,55 +159,7 @@
 }
 
 #pragma mark personView delegate
--(void)personRtn:(int)index
-{
-    /*
-    NSDictionary *productDic = [self requestServer:kPRODUCT_URL];
-    self.array = [[DataCenter sharedDataCenter] productArray:productDic];
-    productTableView.scrollsToTop = YES;
-    [productTableView reloadData];
-    */
-    
-    if (![self checkNet]) {
-        UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
-                                                       message:@"没有网络连接，无法获取数据！"
-                                                      delegate:self
-                                             cancelButtonTitle:@"ok"
-                                             otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    
-    switch (index) {
-        case NewType:
-        {
-            self.product_url = kPRODUCT_NEW_URL;
-            [self synLoadProductData];
 
-            break;
-        }case SaleType:
-        {
-            self.product_url = kPRODUCT_SALE_URL;
-            [self synLoadProductData];
-            break;
-        }case ShopType:
-        {
-            ShopCollectViewController *vc = [[ShopCollectViewController alloc] initWithNibName:nil bundle:nil];
-//            ShopTopViewController *vc = [[ShopTopViewController alloc] initWithNibName:nil bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }case ProductType:
-        {
-            ProductLikeViewController *vc = [[ProductLikeViewController alloc] initWithNibName:nil bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
-
-            
-            break;
-        }
-        default:
-            break;
-    }
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -379,19 +273,6 @@
 
 #pragma mark - ShopView delegate
 
-- (void)shopViewReturn:(int)type
-{
-    if (type == 1) {
-        [self onShared:nil];
-    }else if(type == 2){
-        [UIView animateWithDuration:0.5f
-                              delay:0.0f
-                            options:UIViewAnimationCurveEaseIn
-                         animations:^{
-                             self.shopBtn.centerY = 50;
-                         } completion:NULL];
-    }
-}
 
 #pragma mark-
 #pragma mark force to show the refresh headerView

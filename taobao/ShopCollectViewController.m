@@ -175,13 +175,12 @@
         titleLbl.font = [UIFont systemFontOfSize:12.0f];
         [containView addSubview:titleLbl];
         
-        UIButton *delBtn = [UIButton buttonWithNormalImgName:@"rmoneshop" HighlightImgName:@"rmoneshop" target:self selector:@selector(onDel:)];
-        delBtn.size = CGSizeMake(40, 40);
+        UIButton *delBtn = [UIButton buttonWithNormalImgName:@"delshop" HighlightImgName:@"delshop" target:self selector:@selector(onDel:)];
         delBtn.tag = kSHOP_DEL;
-        delBtn.center = CGPointMake(20,20);
+        delBtn.center = CGPointMake(10,10);
         [containView addSubview:delBtn];
-        delBtn.layer.borderColor = [[UIColor redColor] CGColor];
-        delBtn.layer.borderWidth = 1.0f;
+//        delBtn.layer.borderColor = [[UIColor redColor] CGColor];
+//        delBtn.layer.borderWidth = 1.0f;
     }
 
 }

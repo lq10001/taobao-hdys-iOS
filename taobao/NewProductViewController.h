@@ -2,14 +2,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ParentViewController.h"
-#import "PersonView.h"
 
 #import "EGORefreshTableHeaderView.h"
 #import "EGORefreshTableFooterView.h"
-#import "ShopView.h"
 
 
-@interface MainViewController : ParentViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableDelegate,PersonViewDelegate,ShopViewDelegate>
+@interface NewProductViewController : ParentViewController<UITableViewDataSource,UITableViewDelegate,EGORefreshTableDelegate>
 {
     int page;
     UITableView *productTableView;
@@ -23,10 +21,12 @@
 }
 
 @property(nonatomic,strong)NSMutableArray *productArray;
-@property(nonatomic,strong)ShopView *shopView;
+//@property(nonatomic,strong)ShopView *shopView;
 @property(nonatomic,strong)UIImageView *flipIv;
 @property(nonatomic,strong)UIButton *shopBtn;
 @property(nonatomic,strong)NSString *product_url;
+@property(nonatomic,assign)int productType;
+
 
 
 

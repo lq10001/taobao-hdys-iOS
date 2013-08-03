@@ -15,6 +15,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ShopTopViewController.h"
 #import "MBProgressHUD.h"
+#import "NewProductViewController.h"
 
 @interface MainViewController ()
 
@@ -239,14 +240,18 @@
     switch (index) {
         case NewType:
         {
-            self.product_url = kPRODUCT_NEW_URL;
-            [self synLoadProductData];
+            NewProductViewController *vc = [[NewProductViewController alloc] initWithNibName:nil bundle:nil];
+            vc.productType = 1;
+            [self.navigationController pushViewController:vc animated:YES];
+//            self.product_url = kPRODUCT_NEW_URL;
+//            [self synLoadProductData];
 
             break;
         }case SaleType:
         {
-            self.product_url = kPRODUCT_SALE_URL;
-            [self synLoadProductData];
+            NewProductViewController *vc = [[NewProductViewController alloc] initWithNibName:nil bundle:nil];
+            vc.productType = 2;
+            [self.navigationController pushViewController:vc animated:YES];
             break;
         }case ShopType:
         {

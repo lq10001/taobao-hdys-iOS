@@ -87,6 +87,8 @@
 		DBEDF8FD1745AB4F007A5551 /* person_btn_bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEDF8FB1745AB4F007A5551 /* person_btn_bg1.png */; };
 		DBEDF8FE1745AB4F007A5551 /* person_btn_bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = DBEDF8FC1745AB4F007A5551 /* person_btn_bg2.png */; };
 		DBEDF9011745B345007A5551 /* ShopWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDF9001745B345007A5551 /* ShopWebViewController.m */; };
+		DBF1DEAD17AD3AB3005BBCED /* delshop.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF1DEAC17AD3AB3005BBCED /* delshop.png */; };
+		DBF1DEB017AD3CEB005BBCED /* NewProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF1DEAE17AD3CEB005BBCED /* NewProductViewController.m */; };
 		DBF21FAB17A01BDA00A157C5 /* ShopTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF21FA917A01BDA00A157C5 /* ShopTopViewController.m */; };
 		DBF3CD0717368CA3009163FB /* MainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3CD0617368CA3009163FB /* MainCell.m */; };
 		DBF3CD0C17369370009163FB /* PersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3CD0B17369370009163FB /* PersonView.m */; };
@@ -248,6 +250,9 @@
 		DBEDF8FC1745AB4F007A5551 /* person_btn_bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_btn_bg2.png; sourceTree = "<group>"; };
 		DBEDF8FF1745B345007A5551 /* ShopWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopWebViewController.h; sourceTree = "<group>"; };
 		DBEDF9001745B345007A5551 /* ShopWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopWebViewController.m; sourceTree = "<group>"; };
+		DBF1DEAC17AD3AB3005BBCED /* delshop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delshop.png; sourceTree = "<group>"; };
+		DBF1DEAE17AD3CEB005BBCED /* NewProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewProductViewController.m; sourceTree = "<group>"; };
+		DBF1DEAF17AD3CEB005BBCED /* NewProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewProductViewController.h; sourceTree = "<group>"; };
 		DBF21FA917A01BDA00A157C5 /* ShopTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTopViewController.m; sourceTree = "<group>"; };
 		DBF21FAA17A01BDA00A157C5 /* ShopTopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTopViewController.h; sourceTree = "<group>"; };
 		DBF3CD0517368CA3009163FB /* MainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCell.h; sourceTree = "<group>"; };
@@ -385,6 +390,7 @@
 				DBF66B0317773E3500EDF0A6 /* collect2.png */,
 				DBF66B0617773FD900EDF0A6 /* page1.png */,
 				DBF66B0717773FD900EDF0A6 /* page2.png */,
+				DBF1DEAC17AD3AB3005BBCED /* delshop.png */,
 			);
 			name = main;
 			path = Resource/main;
@@ -516,6 +522,8 @@
 				DBE9EC5A17393DCC00DB61C8 /* ShopView.m */,
 				DBF3CD0A17369370009163FB /* PersonView.h */,
 				DBF3CD0B17369370009163FB /* PersonView.m */,
+				DBF1DEAF17AD3CEB005BBCED /* NewProductViewController.h */,
+				DBF1DEAE17AD3CEB005BBCED /* NewProductViewController.m */,
 				DBE9EC4E1739286900DB61C8 /* ProductInfoViewController.h */,
 				DBE9EC4F1739286900DB61C8 /* ProductInfoViewController.m */,
 				DBD7C4BE177CB55E00CC4C77 /* InfoCell.h */,
@@ -770,6 +778,7 @@
 				DBEC903817A165A900DCE11F /* rmoneshop.png in Resources */,
 				DBEC903917A165A900DCE11F /* addonshop.png in Resources */,
 				DBEC903A17A165A900DCE11F /* addShopBtn.png in Resources */,
+				DBF1DEAD17AD3AB3005BBCED /* delshop.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,6 +816,7 @@
 				DBF66B0D1777406800EDF0A6 /* GrayPageControl.m in Sources */,
 				DBD7C4C0177CB56600CC4C77 /* InfoCell.m in Sources */,
 				DBF21FAB17A01BDA00A157C5 /* ShopTopViewController.m in Sources */,
+				DBF1DEB017AD3CEB005BBCED /* NewProductViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
