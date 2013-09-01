@@ -35,17 +35,6 @@
     
     self.product_url = (self.productType == 1) ?  kPRODUCT_NEW_URL : kPRODUCT_SALE_URL;
     self.productArray = NSMutableArray.new;
-    if ([self checkNet]) {
-        [self loadProductData];
-    }else{
-        UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
-                                                       message:@"没有网络连接，无法获取数据！"
-                                                      delegate:self
-                                             cancelButtonTitle:@"ok"
-                                             otherButtonTitles:nil];
-        [alert show];
-        self.productArray = nil;
-    }
     
     UIImageView *titleIv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"main_title"]];
     titleIv.frame = CGRectMake(0, 0, titleIv.bWidth / 2, titleIv.bHeight / 2);
@@ -97,6 +86,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSThread  *thread =[[NSThread alloc] initWithTarget:self selector:@selector(loadData) object:nil];
+    [thread start];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -111,11 +102,27 @@
     
 }
 
+- (void)loadData
+{
+    if ([Global checkNet]) {
+        [self loadProductData];
+        [productTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    }else{
+        UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
+                                                       message:@"没有网络连接，无法获取数据！"
+                                                      delegate:self
+                                             cancelButtonTitle:@"ok"
+                                             otherButtonTitles:nil];
+        [alert show];
+        self.productArray = nil;
+    }
+}
+
 - (void)loadProductData
 {
     page =1;
     NSString *strUrl = [NSString stringWithFormat:@"%@%i",self.product_url,page];
-    NSDictionary *productDic = [self requestServer:strUrl];
+    NSDictionary *productDic = [Global requestServer:strUrl];
     self.productArray = [[DataCenter sharedDataCenter] productArray:productDic];
 }
 
@@ -190,7 +197,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (![self checkNet]) {
+    if (![Global checkNet]) {
         UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
                                                        message:@"没有网络连接，无法获取数据！"
                                                       delegate:self
@@ -301,7 +308,7 @@
 
 -(void)beginToReloadData:(EGORefreshPos)aRefreshPos{
     
-    if ([self checkNet]) {
+    if ([Global checkNet]) {
         //  should be calling your tableviews data source model to reload
         _reloading = YES;
         
@@ -405,7 +412,7 @@
     
     page += 1;
     NSString *strUrl = [NSString stringWithFormat:@"%@%i",self.product_url,page];
-    NSDictionary *productDic = [self requestServer:strUrl];
+    NSDictionary *productDic = [Global requestServer:strUrl];
     NSArray *temp_array = [[DataCenter sharedDataCenter] productArray:productDic];
     for (Product *pro in temp_array) {
         [self.productArray addObject:pro];

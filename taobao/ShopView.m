@@ -37,10 +37,15 @@
         self.backgroundColor = [UIColor clearColor];
         NSDictionary *adDic = NSDictionary.new;
         int adCount = 0;
-        if ([self checkNet]){
-            NSDictionary *rtnDic = [self requestServer:kSHOP_URL];
-            adDic = [rtnDic objectForKey:@"ad_list"];
-            adCount = adDic.count;
+        if ([Global checkNet]){
+            NSDictionary *rtnDic = [Global requestServer:kSHOP_URL];
+            if (rtnDic == nil) {
+                adDic = nil;
+                adCount = 0;
+            }else{
+                adDic = [rtnDic objectForKey:@"ad_list"];
+                adCount = adDic.count;
+            }
         }
 
         productScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(frame.origin.x, 0, frame.size.width, 300)];
@@ -68,31 +73,7 @@
     //        iv1.image = [UIImage imageNamedAuto:@"3.jpg"];
             [productScrView addSubview:iv1];
             
-            /*
-            
-            UIButton *collectBtn = [UIButton buttonWithNormalImgName:@"collect" selectedImgName:@"collect2" target:self selector:@selector(onCellect:)];
-            collectBtn.frame = CGRectMake(0, 0,collectBtn.bWidth , collectBtn.bHeight);
-            collectBtn.tag = kSHOP_BTN_TAG + i;
-            collectBtn.selected = [[UserInfoManager sharedManager] isSaveShop:[dic objectForKey:@"name"]];
-            
-            UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(iv1.left + 280, 10,collectBtn.width ,collectBtn.height)];
-            view1.backgroundColor = [UIColor clearColor];
-            [productScrView addSubview:view1];
 
-            [view1 addSubview:collectBtn];
-            collectBtn.center = CGPointMake(view1.width / 2, view1.height / 2);
-
-            
-            
-            UILabel *shareLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 23, view1.width, 20)];
-            shareLbl.tag = kSHOP_LBL_TAG + i;
-            shareLbl.textAlignment = UITextAlignmentCenter;
-            shareLbl.backgroundColor = [UIColor clearColor];
-            shareLbl.textColor = [UIColor whiteColor];
-            shareLbl.font = [UIFont systemFontOfSize:11.0f];
-            shareLbl.text = @"收藏";
-            [view1 addSubview:shareLbl];
-             */
             
             
             
@@ -174,8 +155,8 @@
         
         keyBordeTop = searchView.top;
         
-        if ([self checkNet]){
-            NSDictionary *searchDic = [self requestServer:kSEARCH_TAG_URL];
+        if ([Global checkNet]){
+            NSDictionary *searchDic = [Global requestServer:kSEARCH_TAG_URL];
             searchArray = [[DataCenter sharedDataCenter] searchArray:searchDic];
         }
         NSMutableArray *nameArray = NSMutableArray.new;
@@ -259,34 +240,6 @@
     return self;
 }
 
-- (BOOL)checkNet
-{
-    BOOL isExistenceNetwork = NO;
-    Reachability *r = [Reachability reachabilityWithHostname:@"www.apple.com"];
-    switch ([r currentReachabilityStatus]) {
-        case NotReachable:
-            isExistenceNetwork=NO;
-            break;
-        case ReachableViaWWAN:
-            isExistenceNetwork=YES;
-            break;
-        case ReachableViaWiFi:
-            isExistenceNetwork=YES;
-            break;
-    }
-    return isExistenceNetwork;
-}
-
-
-- (NSDictionary*)requestServer:(NSString*)str_url
-{
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:str_url]];
-    //将请求的url数据放到NSData对象中
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    //IOS5自带解析类NSJSONSerialization从response中解析出数据放到字典中
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:nil];
-    return dic;
-}
 
 #pragma mark - Share 
 

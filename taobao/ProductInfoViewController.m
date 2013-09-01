@@ -18,6 +18,7 @@
 @synthesize product;
 @synthesize tsView;
 @synthesize productImgArray;
+@synthesize productTableView;
 
 - (void)viewDidLoad
 {
@@ -27,23 +28,13 @@
     
     self.productImgArray = [[NSMutableArray alloc] init];
     [self.productImgArray addObject:self.product.pic_url];
-    
-    NSString *url1 = [NSString stringWithFormat:@"%@%i",kPRODUCTIMG_URL,self.product.productid];
-    
-    DLog(@" %i  %@ ",self.product.productid,self.product.pic_url);
-    
-    NSDictionary *rtnDic = [self requestServer:url1];
-    NSDictionary *adDic = [rtnDic objectForKey:@"productimg_list"];
-    for (NSDictionary *dic in adDic) {
-        [self.productImgArray addObject:[dic objectForKey:@"imgurl"]];
-    }
-    
-    UITableView *productTableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    productTableView.showsHorizontalScrollIndicator = NO;
-    productTableView.showsVerticalScrollIndicator = NO;
-    productTableView.delegate = self;
-    productTableView.dataSource = self;
-    [self.view addSubview:productTableView];
+
+    self.productTableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    self.productTableView.showsHorizontalScrollIndicator = NO;
+    self.productTableView.showsVerticalScrollIndicator = NO;
+    self.productTableView.delegate = self;
+    self.productTableView.dataSource = self;
+    [self.view addSubview:self.productTableView];
 
     
     UIImageView *priceIv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"product_price"]];
@@ -131,6 +122,27 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSThread  *thread =[[NSThread alloc] initWithTarget:self selector:@selector(loadData) object:nil];
+    [thread start];
+}
+
+- (void)loadData
+{
+    NSString *url1 = [NSString stringWithFormat:@"%@%i",kPRODUCTIMG_URL,self.product.productid];
+    
+    DLog(@" %i  %@ ",self.product.productid,self.product.pic_url);
+    
+    NSDictionary *rtnDic = [Global requestServer:url1];
+    NSDictionary *adDic = [rtnDic objectForKey:@"productimg_list"];
+    for (NSDictionary *dic in adDic) {
+        [self.productImgArray addObject:[dic objectForKey:@"imgurl"]];
+    }
+    [self.productTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}
+
 - (void)onBack
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -203,9 +215,8 @@
 {
     DLog(@"");
     ShopWebViewController *shopWeb = [[ShopWebViewController alloc] initWithNibName:nil bundle:nil];
-    shopWeb.shopUrl = self.product.url;
+    shopWeb.shopUrl = [NSString stringWithFormat:@"%@%@",kTAOBAO_CLICK_URL,self.product.url];
     [self.navigationController pushViewController:shopWeb animated:YES];
-
 }
 
 - (void)onShare

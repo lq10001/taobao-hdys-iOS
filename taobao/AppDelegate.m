@@ -21,13 +21,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [UserInfoManager sharedManager];
-    [MobClick startWithAppkey:kUMENG_KEY];
-    [UMSocialData setAppKey:kUMENG_KEY];
-    [UMSocialConfig setSupportSinaSSO:NO];
-    [WXApi registerApp:@"wx8bb0a94a729a0900"];
-    
-    //TAOBAO
-//    [TopIOSClient registerIOSClient:@"appkey" appSecret:@"appsecretcode" callbackUrl:@"appcallback://" needAutoRefreshToken:TRUE];
+//    [MobClick startWithAppkey:kUMENG_KEY];
+//    [UMSocialData setAppKey:kUMENG_KEY];
+//    [UMSocialConfig setSupportSinaSSO:NO];
+//    [WXApi registerApp:@"wx8bb0a94a729a0900"];
     
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

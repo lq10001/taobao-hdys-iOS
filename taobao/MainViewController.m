@@ -35,18 +35,6 @@
     
     self.product_url = kPRODUCT_NEW_URL;
     self.productArray = NSMutableArray.new;
-    if ([self checkNet]) {
-        [self loadProductData];
-    }else{
-        UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
-                                                       message:@"没有网络连接，无法获取数据！"
-                                                      delegate:self
-                                             cancelButtonTitle:@"ok"
-                                             otherButtonTitles:nil];
-        [alert show];
-        self.productArray = nil;
-    }
-
     
     productTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 38 , self.view.width, self.view.height - 38)];
     productTableView.showsHorizontalScrollIndicator = NO;
@@ -76,7 +64,7 @@
     self.shopView.parentVc = self;
     self.shopView.top = - self.view.height ;
     [self.view addSubview:self.shopView];
-        
+    
     self.shopBtn = [UIButton buttonWithNormalImgName:@"main_tuijian1" HighlightImgName:nil target:self selector:@selector(onShop:)];
     self.shopBtn.center = CGPointMake(self.view.width - 20,50);
     [self.view addSubview:self.shopBtn];
@@ -89,6 +77,8 @@
 {
     [super viewWillAppear:animated];
     self.shopView.top = - self.view.height ;
+    NSThread  *thread =[[NSThread alloc] initWithTarget:self selector:@selector(loadData) object:nil];
+    [thread start];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -103,11 +93,27 @@
     
 }
 
+- (void)loadData
+{
+    if ([Global checkNet]) {
+        [self loadProductData];
+        [productTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    }else{
+        UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
+                                                       message:@"没有网络连接，无法获取数据！"
+                                                      delegate:self
+                                             cancelButtonTitle:@"ok"
+                                             otherButtonTitles:nil];
+        [alert show];
+        self.productArray = nil;
+    }
+}
+
 - (void)loadProductData
 {
     page =1;
     NSString *strUrl = [NSString stringWithFormat:@"%@%i",self.product_url,page];
-    NSDictionary *productDic = [self requestServer:strUrl];
+    NSDictionary *productDic = [Global requestServer:strUrl];
     self.productArray = [[DataCenter sharedDataCenter] productArray:productDic];
 }
 
@@ -166,7 +172,7 @@
 - (void)onShop:(UIButton*)btn
 {
     
-    if ([self checkNet]) {
+    if ([Global checkNet]) {
         self.shopView.hidden = NO;
         [UIView animateWithDuration:0.5f
                               delay:0.0f
@@ -227,7 +233,7 @@
     [productTableView reloadData];
     */
     
-    if (![self checkNet]) {
+    if (![Global checkNet]) {
         UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
                                                        message:@"没有网络连接，无法获取数据！"
                                                       delegate:self
@@ -301,7 +307,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (![self checkNet]) {
+    if (![Global checkNet]) {
         UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
                                                        message:@"没有网络连接，无法获取数据！"
                                                       delegate:self
@@ -425,7 +431,7 @@
 
 -(void)beginToReloadData:(EGORefreshPos)aRefreshPos{
     
-    if ([self checkNet]) {
+    if ([Global checkNet]) {
         //  should be calling your tableviews data source model to reload
         _reloading = YES;
         
@@ -529,7 +535,7 @@
     
     page += 1;
     NSString *strUrl = [NSString stringWithFormat:@"%@%i",self.product_url,page];
-    NSDictionary *productDic = [self requestServer:strUrl];
+    NSDictionary *productDic = [Global requestServer:strUrl];
     NSArray *temp_array = [[DataCenter sharedDataCenter] productArray:productDic];
     for (Product *pro in temp_array) {
         [self.productArray addObject:pro];

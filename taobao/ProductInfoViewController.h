@@ -19,5 +19,7 @@ typedef enum {
 
 @property(nonatomic,strong)NSMutableArray *productImgArray;
 
+@property(nonatomic,strong)UITableView *productTableView;
+
 
 @end

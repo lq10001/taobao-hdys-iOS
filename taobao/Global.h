@@ -35,6 +35,8 @@
 #define kSHOPARRAY_DATA      @"kSHOPARRAY_DATA"
 #define kPRODUCTARRAY_DATA      @"kPRODUCTARRAY_DATA"
 
+#define kTAOBAO_CLICK_URL   @"http://s.click.taobao.com/t_9?p=mm_1698546_0_0&l="
+
 
 
 #define kUMENG_KEY      @"51860ce956240b65f202f72e"
@@ -52,12 +54,12 @@
 #define kPRODUCTIMG_URL     @"http://121.199.47.31:8080/taobao/web/productimg_list?productid="
 
 
-//#define kSERVER_URL         @"http://192.168.1.104:8080/taobao/"
-//#define kSHOP_URL           @"http://192.168.1.104:8080/taobao/web/shop_list"
-//#define kSEARCH_TAG_URL     @"http://192.168.1.104:8080/taobao/web/search_list"
-//#define kPRODUCT_NEW_URL        @"http://192.168.1.104:8080/taobao/web/product_list?numPerPage=20&pageNum="
-//#define kPRODUCT_SALE_URL        @"http://192.168.1.104:8080/taobao/web/productSale_list?numPerPage=20&pageNum="
-//#define kPRODUCTIMG_URL     @"http://192.168.1.104:8080/taobao/web/productimg_list?productid="
+//#define kSERVER_URL         @"http://192.168.1.105:8080/taobao/"
+//#define kSHOP_URL           @"http://192.168.1.105:8080/taobao/web/shop_list"
+//#define kSEARCH_TAG_URL     @"http://192.168.1.105:8080/taobao/web/search_list"
+//#define kPRODUCT_NEW_URL        @"http://192.168.1.105:8080/taobao/web/product_list?numPerPage=20&pageNum="
+//#define kPRODUCT_SALE_URL        @"http://192.168.1.105:8080/taobao/web/productSale_list?numPerPage=20&pageNum="
+//#define kPRODUCTIMG_URL     @"http://192.168.1.105:8080/taobao/web/productimg_list?productid="
 
 
 #define kNEW_PRODUCT_URL    @"http://handuyishe.m.tmall.com/shop/shop_auction_search.htm?conditions=&sid=9ee8445d31cc7a85&sort=oldstarts&suid=263817957&q=&end_price=&pds=newrank%23h%23shop&ascid=&scid=&start_price="
@@ -85,6 +87,14 @@
 #endif
 // ALog always displays output regardless of the DEBUG setting
 #define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+@interface Global
+
++ (NSDictionary*)requestServer:(NSString*)str_url;
+
++ (BOOL)checkNet;
+
+@end
 
 
 @interface UIImage(UIImage_Extension)

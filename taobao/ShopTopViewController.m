@@ -25,8 +25,8 @@
     [super viewDidLoad];
         
     adDic = NSDictionary.new;
-    if ([self checkNet]){
-        NSDictionary *rtnDic = [self requestServer:kSHOP_URL];
+    if ([Global checkNet]){
+        NSDictionary *rtnDic = [Global requestServer:kSHOP_URL];
         adDic = [rtnDic objectForKey:@"ad_list"];
         
         self.shopArray = NSMutableArray.new;

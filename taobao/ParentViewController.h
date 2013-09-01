@@ -7,7 +7,4 @@
 
 @interface ParentViewController : UIViewController<NSURLConnectionDelegate>
 
-- (NSDictionary*)requestServer:(NSString*)str_url;
-- (BOOL)checkNet;
-
 @end
