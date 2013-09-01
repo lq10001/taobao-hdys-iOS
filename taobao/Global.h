@@ -22,6 +22,11 @@
 #define kScreenScale ((int)[[UIScreen mainScreen] scale])
 #endif
 
+#define Rect2(x,y,w,h)   (Is_Ipad ? CGRectMake(x,y,w,h) :   CGRectMake(x / 2,y/ 2,w/2,h/2))
+
+#define Num2(x)   (Is_Ipad ? x * 2 : x)
+
+
 #define kMUSIC          @"kMUSIC"
 #define kSOUND          @"kSOUND"
 #define kNOTIFY         @"kNOTIFY"
