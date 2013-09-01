@@ -896,10 +896,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/taobao/umeng\"",
-					"\"$(SRCROOT)/taobao/UMSocial_Sdk_2.1.1/frameworks/Wechat\"",
-					"\"$(SRCROOT)/taobao/UMSocial_Sdk_2.1.1\"",
 					"\"$(SRCROOT)/taobao\"",
-					"\"$(SRCROOT)/taobao/taobao\"",
 					"\"$(SRCROOT)/taobao/UMSocial_Sdk_2.1.3/frameworks/Wechat\"",
 					"\"$(SRCROOT)/taobao/UMSocial_Sdk_2.1.3\"",
 				);
@@ -923,10 +920,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/taobao/umeng\"",
-					"\"$(SRCROOT)/taobao/UMSocial_Sdk_2.1.1/frameworks/Wechat\"",
-					"\"$(SRCROOT)/taobao/UMSocial_Sdk_2.1.1\"",
 					"\"$(SRCROOT)/taobao\"",
-					"\"$(SRCROOT)/taobao/taobao\"",
 					"\"$(SRCROOT)/taobao/UMSocial_Sdk_2.1.3/frameworks/Wechat\"",
 					"\"$(SRCROOT)/taobao/UMSocial_Sdk_2.1.3\"",
 				);

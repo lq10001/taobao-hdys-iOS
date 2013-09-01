@@ -63,7 +63,6 @@
     
     _reloading = NO;
     [self createHeaderView];
-    [self performSelector:@selector(testFinishedLoadData) withObject:nil afterDelay:0.0f];
     
     self.flipIv = [[UIImageView alloc] initWithImage:[UIImage imageNamedAuto:@"flip"]];
     self.flipIv.frame = CGRectMake(0, 0, self.flipIv.bWidth, self.flipIv.bHeight);
@@ -106,7 +105,7 @@
 {
     if ([Global checkNet]) {
         [self loadProductData];
-        [productTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(mainLoadData) withObject:nil waitUntilDone:NO];
     }else{
         UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
                                                        message:@"没有网络连接，无法获取数据！"
@@ -116,6 +115,12 @@
         [alert show];
         self.productArray = nil;
     }
+}
+
+- (void)mainLoadData
+{
+    [productTableView reloadData];
+    [self testFinishedLoadData];
 }
 
 - (void)loadProductData

@@ -45,7 +45,6 @@
     
     _reloading = NO;
     [self createHeaderView];
-    [self performSelector:@selector(testFinishedLoadData) withObject:nil afterDelay:0.0f];
     
     UIButton *menuBtn = [UIButton buttonWithNormalImgName:@"main_menu" HighlightImgName:nil target:self selector:@selector(onPerson:)];
     menuBtn.left = -5;
@@ -97,7 +96,7 @@
 {
     if ([Global checkNet]) {
         [self loadProductData];
-        [productTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(mainLoadData) withObject:nil waitUntilDone:NO];
     }else{
         UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
                                                        message:@"没有网络连接，无法获取数据！"
@@ -107,6 +106,12 @@
         [alert show];
         self.productArray = nil;
     }
+}
+
+- (void)mainLoadData
+{
+    [productTableView reloadData];
+    [self testFinishedLoadData];
 }
 
 - (void)loadProductData
