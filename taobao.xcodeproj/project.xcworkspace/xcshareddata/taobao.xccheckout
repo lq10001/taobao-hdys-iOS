@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CF2DD27D-307E-4B6E-B8FA-A9B449732344</string>
+	<key>IDESourceControlProjectName</key>
+	<string>taobao</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BF8CCC31B5ABE1073C4539E989AD1D795B0639B8</key>
+		<string>https://git.oschina.net/dongfangx/taobao-hdys.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>taobao.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BF8CCC31B5ABE1073C4539E989AD1D795B0639B8</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://git.oschina.net/dongfangx/taobao-hdys.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BF8CCC31B5ABE1073C4539E989AD1D795B0639B8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BF8CCC31B5ABE1073C4539E989AD1D795B0639B8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>taobao-hdys</string>
+		</dict>
+	</array>
+</dict>
+</plist>
