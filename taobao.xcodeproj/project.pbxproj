@@ -410,13 +410,6 @@
 		DBEBF0F917363FEA00A09D27 = {
 			isa = PBXGroup;
 			children = (
-				4A2170B21B06FAEA00FC65A9 /* SDWebImage.framework */,
-				DB0F425C175068CA00D484AD /* QuartzCore.framework */,
-				DBF99689174BC66A00CFCF66 /* MapKit.framework */,
-				DB3198FB174BC5B000E1DD39 /* ImageIO.framework */,
-				DB110F4D173F4168009E2F43 /* SystemConfiguration.framework */,
-				DB110F4B173F40E0009E2F43 /* StoreKit.framework */,
-				DB110F49173F40A3009E2F43 /* CFNetwork.framework */,
 				DBEBF10E17363FEA00A09D27 /* taobao */,
 				DBEBF10717363FEA00A09D27 /* Frameworks */,
 				DBEBF10517363FEA00A09D27 /* Products */,
@@ -434,6 +427,13 @@
 		DBEBF10717363FEA00A09D27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A2170B21B06FAEA00FC65A9 /* SDWebImage.framework */,
+				DB0F425C175068CA00D484AD /* QuartzCore.framework */,
+				DBF99689174BC66A00CFCF66 /* MapKit.framework */,
+				DB3198FB174BC5B000E1DD39 /* ImageIO.framework */,
+				DB110F4D173F4168009E2F43 /* SystemConfiguration.framework */,
+				DB110F4B173F40E0009E2F43 /* StoreKit.framework */,
+				DB110F49173F40A3009E2F43 /* CFNetwork.framework */,
 				DBEBF1361736454A00A09D27 /* libz.dylib */,
 				DBEBF10817363FEA00A09D27 /* UIKit.framework */,
 				DBEBF10A17363FEA00A09D27 /* Foundation.framework */,
