@@ -67,8 +67,8 @@ static DataCenter *dataCenter = nil;
         
         p.price = [dic1 objectForKey:@"price"];
         p.url = [dic1 objectForKey:@"url"];
-        p.pic_url = [dic1 objectForKey:@"pic_url"];
-        p.title = [dic1 objectForKey:@"title"];
+        p.pic_url = [dic1 objectForKey:@"picurl"];
+        p.title = [dic1 objectForKey:@"name"];
         p.nick = [dic1 objectForKey:@"nick"];
         
         [array addObject:p];

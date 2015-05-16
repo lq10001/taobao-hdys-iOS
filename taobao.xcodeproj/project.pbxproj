@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A2170B31B06FAEA00FC65A9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A2170B21B06FAEA00FC65A9 /* SDWebImage.framework */; };
 		DB0F423E175040A400D484AD /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0F423D175040A400D484AD /* Search.m */; };
 		DB0F42411750411700D484AD /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0F42401750411600D484AD /* DataCenter.m */; };
 		DB0F424417504C7900D484AD /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0F424317504C7900D484AD /* Product.m */; };
@@ -113,27 +114,10 @@
 		DBF6A9A117683FB8003FD552 /* ShopCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6A9A017683FB8003FD552 /* ShopCollectViewController.m */; };
 		DBF6A9A817684B85003FD552 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6A9A717684B85003FD552 /* MBProgressHUD.m */; };
 		DBF9968A174BC66A00CFCF66 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF99689174BC66A00CFCF66 /* MapKit.framework */; };
-		DBF996FE174BC97400CFCF66 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF996FB174BC95B00CFCF66 /* libSDWebImage.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		DBF996FA174BC95B00CFCF66 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DBF996F1174BC95B00CFCF66 /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 53761325155AD0D5005750A4;
-			remoteInfo = SDWebImage;
-		};
-		DBF996FC174BC95B00CFCF66 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DBF996F1174BC95B00CFCF66 /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 531041E0157EAFA400BBABC3;
-			remoteInfo = "SDWebImage+MKAnnotation";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		4A2170B21B06FAEA00FC65A9 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		DB0F423C175040A400D484AD /* Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Search.h; sourceTree = "<group>"; };
 		DB0F423D175040A400D484AD /* Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.m; sourceTree = "<group>"; };
 		DB0F423F1750411600D484AD /* DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenter.h; sourceTree = "<group>"; };
@@ -284,7 +268,6 @@
 		DBF6A9A617684B85003FD552 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		DBF6A9A717684B85003FD552 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		DBF99689174BC66A00CFCF66 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		DBF996F1174BC95B00CFCF66 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = taobao/SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,7 +277,6 @@
 			files = (
 				DB0F425D175068CA00D484AD /* QuartzCore.framework in Frameworks */,
 				DBEBF10D17363FEA00A09D27 /* CoreGraphics.framework in Frameworks */,
-				DBF996FE174BC97400CFCF66 /* libSDWebImage.a in Frameworks */,
 				DBF9968A174BC66A00CFCF66 /* MapKit.framework in Frameworks */,
 				DB3198FC174BC5B000E1DD39 /* ImageIO.framework in Frameworks */,
 				DB110F4E173F4168009E2F43 /* SystemConfiguration.framework in Frameworks */,
@@ -303,6 +285,7 @@
 				DBEBF1371736454A00A09D27 /* libz.dylib in Frameworks */,
 				DBEBF10917363FEA00A09D27 /* UIKit.framework in Frameworks */,
 				DBEBF10B17363FEA00A09D27 /* Foundation.framework in Frameworks */,
+				4A2170B31B06FAEA00FC65A9 /* SDWebImage.framework in Frameworks */,
 				DBEBF135173644F600A09D27 /* libMobClickLibrary.a in Frameworks */,
 				DBEC35A4177D325C00C7741C /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
 				DBEC35A5177D325C00C7741C /* libUMSocial_Sdk_2.1.3.a in Frameworks */,
@@ -427,6 +410,7 @@
 		DBEBF0F917363FEA00A09D27 = {
 			isa = PBXGroup;
 			children = (
+				4A2170B21B06FAEA00FC65A9 /* SDWebImage.framework */,
 				DB0F425C175068CA00D484AD /* QuartzCore.framework */,
 				DBF99689174BC66A00CFCF66 /* MapKit.framework */,
 				DB3198FB174BC5B000E1DD39 /* ImageIO.framework */,
@@ -450,7 +434,6 @@
 		DBEBF10717363FEA00A09D27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DBF996F1174BC95B00CFCF66 /* SDWebImage.xcodeproj */,
 				DBEBF1361736454A00A09D27 /* libz.dylib */,
 				DBEBF10817363FEA00A09D27 /* UIKit.framework */,
 				DBEBF10A17363FEA00A09D27 /* Foundation.framework */,
@@ -632,15 +615,6 @@
 			name = view;
 			sourceTree = "<group>";
 		};
-		DBF996F2174BC95B00CFCF66 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DBF996FB174BC95B00CFCF66 /* libSDWebImage.a */,
-				DBF996FD174BC95B00CFCF66 /* libSDWebImage+MKAnnotation.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -680,35 +654,12 @@
 			mainGroup = DBEBF0F917363FEA00A09D27;
 			productRefGroup = DBEBF10517363FEA00A09D27 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = DBF996F2174BC95B00CFCF66 /* Products */;
-					ProjectRef = DBF996F1174BC95B00CFCF66 /* SDWebImage.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				DBEBF10317363FEA00A09D27 /* taobao */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		DBF996FB174BC95B00CFCF66 /* libSDWebImage.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSDWebImage.a;
-			remoteRef = DBF996FA174BC95B00CFCF66 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DBF996FD174BC95B00CFCF66 /* libSDWebImage+MKAnnotation.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libSDWebImage+MKAnnotation.a";
-			remoteRef = DBF996FC174BC95B00CFCF66 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DBEBF10217363FEA00A09D27 /* Resources */ = {
@@ -887,12 +838,23 @@
 		DBEBF12917363FEA00A09D27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Betty Liu (C22QDA4MSG)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Betty Liu (C22QDA4MSG)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/SDWebImage-djkqcbjdpsiakxagzbpkuhhmukfi/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "taobao/taobao-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/SDWebImage/SDWebImage\"",
+				);
 				INFOPLIST_FILE = "taobao/taobao-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/taobao/umeng\"",
@@ -900,7 +862,7 @@
 					"\"$(SRCROOT)/taobao/UMSocial_Sdk_2.1.3/frameworks/Wechat\"",
 					"\"$(SRCROOT)/taobao/UMSocial_Sdk_2.1.3\"",
 				);
-				OTHER_LDFLAGS = "-all_load";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3B4A5E1E-7E52-4AC2-BA1C-C2813F0ABC1D";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B4A5E1E-7E52-4AC2-BA1C-C2813F0ABC1D";
@@ -911,12 +873,23 @@
 		DBEBF12A17363FEA00A09D27 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Betty Liu (C22QDA4MSG)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Betty Liu (C22QDA4MSG)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/SDWebImage-djkqcbjdpsiakxagzbpkuhhmukfi/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "taobao/taobao-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/SDWebImage/SDWebImage\"",
+				);
 				INFOPLIST_FILE = "taobao/taobao-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/taobao/umeng\"",
@@ -924,7 +897,7 @@
 					"\"$(SRCROOT)/taobao/UMSocial_Sdk_2.1.3/frameworks/Wechat\"",
 					"\"$(SRCROOT)/taobao/UMSocial_Sdk_2.1.3\"",
 				);
-				OTHER_LDFLAGS = "-all_load";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3B4A5E1E-7E52-4AC2-BA1C-C2813F0ABC1D";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B4A5E1E-7E52-4AC2-BA1C-C2813F0ABC1D";

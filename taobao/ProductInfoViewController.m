@@ -215,7 +215,8 @@
 {
     DLog(@"");
     ShopWebViewController *shopWeb = [[ShopWebViewController alloc] initWithNibName:nil bundle:nil];
-    shopWeb.shopUrl = [NSString stringWithFormat:@"%@%@",kTAOBAO_CLICK_URL,self.product.url];
+    shopWeb.shopUrl = product.url;
+//    shopWeb.shopUrl = [NSString stringWithFormat:@"%@%@",kTAOBAO_CLICK_URL,self.product.url];
     [self.navigationController pushViewController:shopWeb animated:YES];
 }
 
