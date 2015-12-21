@@ -34,7 +34,7 @@
     self = [super initWithFrame:frame];
     if (self) {
     
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor whiteColor];
         NSDictionary *adDic = NSDictionary.new;
         int adCount = 0;
         if ([Global checkNet]){
@@ -70,7 +70,8 @@
             
             UIImageView *iv1 = [[UIImageView alloc] initWithFrame:CGRectMake(i * 320, 0, productScrView.frame.size.width, 300)];
             iv1.tag = kSHOP_IV_TAG + i;
-    //        iv1.image = [UIImage imageNamedAuto:@"3.jpg"];
+            iv1.contentMode = UIViewContentModeScaleAspectFill;
+            iv1.image = [UIImage imageNamedAuto:@"3.jpg"];
             [productScrView addSubview:iv1];
             
 

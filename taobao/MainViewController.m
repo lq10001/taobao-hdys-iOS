@@ -36,7 +36,7 @@
     self.product_url = kPRODUCT_NEW_URL;
     self.productArray = NSMutableArray.new;
     
-    productTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 38 , self.view.width, self.view.height - 38)];
+    productTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 38 + 20 , self.view.width, self.view.height - 38 + 20)];
     productTableView.showsHorizontalScrollIndicator = NO;
     productTableView.showsVerticalScrollIndicator = NO;
     productTableView.delegate = self;
@@ -65,7 +65,7 @@
     [self.view addSubview:self.shopView];
     
     self.shopBtn = [UIButton buttonWithNormalImgName:@"main_tuijian1" HighlightImgName:nil target:self selector:@selector(onShop:)];
-    self.shopBtn.center = CGPointMake(self.view.width - 20,50);
+    self.shopBtn.center = CGPointMake(self.view.width - 20,50 + 20);
     [self.view addSubview:self.shopBtn];
 
 }
@@ -75,7 +75,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.shopView.top = - self.view.height ;
+    self.shopView.top = - self.view.height + 20 ;
     NSThread  *thread =[[NSThread alloc] initWithTarget:self selector:@selector(loadData) object:nil];
     [thread start];
 }
@@ -183,7 +183,7 @@
                               delay:0.0f
                             options:UIViewAnimationCurveEaseOut
                          animations:^{
-                             self.shopView.top = 0;
+                             self.shopView.top = 20;
                              shopBtn.centerY = self.shopView.height + 50;
                          } completion:NULL];
     }else{

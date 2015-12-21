@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A2170B31B06FAEA00FC65A9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A2170B21B06FAEA00FC65A9 /* SDWebImage.framework */; };
+		4A3CE6CB1C2849D900559FA3 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A3CE6CA1C2849D900559FA3 /* 3.jpg */; };
 		DB0F423E175040A400D484AD /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0F423D175040A400D484AD /* Search.m */; };
 		DB0F42411750411700D484AD /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0F42401750411600D484AD /* DataCenter.m */; };
 		DB0F424417504C7900D484AD /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0F424317504C7900D484AD /* Product.m */; };
@@ -118,6 +119,7 @@
 
 /* Begin PBXFileReference section */
 		4A2170B21B06FAEA00FC65A9 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		4A3CE6CA1C2849D900559FA3 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		DB0F423C175040A400D484AD /* Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Search.h; sourceTree = "<group>"; };
 		DB0F423D175040A400D484AD /* Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.m; sourceTree = "<group>"; };
 		DB0F423F1750411600D484AD /* DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenter.h; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 		DB2BAE07174522C10046949F /* main */ = {
 			isa = PBXGroup;
 			children = (
+				4A3CE6CA1C2849D900559FA3 /* 3.jpg */,
 				DBEC903517A165A900DCE11F /* rmoneshop.png */,
 				DBEC903617A165A900DCE11F /* addonshop.png */,
 				DBEC903717A165A900DCE11F /* addShopBtn.png */,
@@ -699,6 +702,7 @@
 				DB0F4274175078A900D484AD /* search_text.png in Resources */,
 				DB7D91E61768660F004B7250 /* shop_collect.png in Resources */,
 				DBEA485F176B5DB400D2112C /* search_bg2.png in Resources */,
+				4A3CE6CB1C2849D900559FA3 /* 3.jpg in Resources */,
 				DBEA4861176B5DDD00D2112C /* search_split.png in Resources */,
 				DBF476F8176DA35800529BE4 /* like.png in Resources */,
 				DBF476F9176DA35800529BE4 /* like2.png in Resources */,
