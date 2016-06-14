@@ -76,8 +76,9 @@
 {
     [super viewWillAppear:animated];
     self.shopView.top = - self.view.height + 20 ;
-    NSThread  *thread =[[NSThread alloc] initWithTarget:self selector:@selector(loadData) object:nil];
-    [thread start];
+    [self loadProductData];
+//    NSThread  *thread =[[NSThread alloc] initWithTarget:self selector:@selector(loadData) object:nil];
+//    [thread start];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -95,7 +96,7 @@
 - (void)loadData
 {
     if ([Global checkNet]) {
-        [self loadProductData];
+        
         [self performSelectorOnMainThread:@selector(mainLoadData) withObject:nil waitUntilDone:NO];
     }else{
         UIAlertView *alert =[[UIAlertView alloc] initWithTitle:nil
@@ -118,8 +119,20 @@
 {
     page =1;
     NSString *strUrl = [NSString stringWithFormat:@"%@%i",self.product_url,page];
-    NSDictionary *productDic = [Global requestServer:strUrl];
-    self.productArray = [[DataCenter sharedDataCenter] productArray:productDic];
+    
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:strUrl] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error == nil) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+            self.productArray =[[DataCenter sharedDataCenter] productArray:dic];
+            [self performSelectorOnMainThread:@selector(loadOk) withObject:nil waitUntilDone:NO];
+        }else{
+            NSLog(@" %@ ",error);
+        }
+    }];
+    [task resume];
+    
+//    NSDictionary *productDic = [Global requestServer:strUrl];
+//    self.productArray = [[DataCenter sharedDataCenter] productArray:productDic];
 }
 
 - (void)synLoadProductData
@@ -540,17 +553,34 @@
     
     page += 1;
     NSString *strUrl = [NSString stringWithFormat:@"%@%i",self.product_url,page];
-    NSDictionary *productDic = [Global requestServer:strUrl];
-    NSArray *temp_array = [[DataCenter sharedDataCenter] productArray:productDic];
-    for (Product *pro in temp_array) {
-        [self.productArray addObject:pro];
-    }
+//    NSDictionary *productDic = [Global requestServer:strUrl];
+//    NSArray *temp_array = [[DataCenter sharedDataCenter] productArray:productDic];
     
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:strUrl] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error == nil) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+            NSArray *temp_array =[[DataCenter sharedDataCenter] productArray:dic];
+            
+            for (Product *pro in temp_array) {
+                [self.productArray addObject:pro];
+            }
+            [self performSelectorOnMainThread:@selector(loadOk) withObject:nil waitUntilDone:NO];
+        }
+    }];
+    [task resume];
+
+    
+    
+}
+
+- (void)loadOk
+{
     [self removeFooterView];
     [productTableView reloadData];
     [self testFinishedLoadData];
-    
+
 }
+
 -(void)testFinishedLoadData{
     
     [self finishReloadingData];

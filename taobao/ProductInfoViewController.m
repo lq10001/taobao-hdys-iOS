@@ -138,7 +138,7 @@
     NSDictionary *rtnDic = [Global requestServer:url1];
     NSDictionary *adDic = [rtnDic objectForKey:@"productimg_list"];
     for (NSDictionary *dic in adDic) {
-        [self.productImgArray addObject:[dic objectForKey:@"imgurl"]];
+        [self.productImgArray addObject:[dic objectForKey:@"url"]];
     }
     [self.productTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }

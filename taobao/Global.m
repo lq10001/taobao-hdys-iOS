@@ -7,6 +7,20 @@
 
 + (NSDictionary*)requestServer:(NSString*)str_url
 {
+    /*
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:str_url] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+//            return nil;
+        } else {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+//            return dic;
+        }
+
+    }];
+    
+    [task resume];
+     */
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:str_url]];
     //将请求的url数据放到NSData对象中
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];

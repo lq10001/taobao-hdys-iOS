@@ -156,9 +156,15 @@
         keyBordeTop = searchView.top;
         
         if ([Global checkNet]){
-            NSDictionary *searchDic = [Global requestServer:kSEARCH_TAG_URL];
-            searchArray = [[DataCenter sharedDataCenter] searchArray:searchDic];
+            NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:kSEARCH_TAG_URL] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                if (error == nil) {
+                    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+                    searchArray = [[DataCenter sharedDataCenter] searchArray:dic];
+                }
+            }];
+            [task resume];
         }
+        
         NSMutableArray *nameArray = NSMutableArray.new;
         for (Search *search in searchArray) {
             [nameArray addObject:search.name];
